@@ -4,6 +4,8 @@ import com.senai.lab365.magazineSenai.models.Produto;
 import com.senai.lab365.magazineSenai.repositors.ProdutoRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 
 public class  ProdutoService {
@@ -24,4 +26,21 @@ public class  ProdutoService {
         repository.save(produto);
 
     }
+
+    public void excluir(Produto produto){
+        repository.delete(produto);
+
+    }
+    public List<Produto> buscaTodos(){
+
+        return (List<Produto>) repository.findAll();
+
+    }
+
+    // public Produto == public retorna um produto
+    public Produto buscaPorId(Long id){
+
+        return repository.findById(id).get();
+    }
+
 }
